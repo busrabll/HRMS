@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.EmployeesService;
+import kodlamaio.hrms.business.abstracts.EmployeeService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.EmployeesDao;
-import kodlamaio.hrms.entities.concretes.Employees;
+import kodlamaio.hrms.dataAccess.abstracts.EmployeeDao;
+import kodlamaio.hrms.entities.concretes.Employee;
 
 @Service
-public class EmployeesManager implements EmployeesService {
+public class EmployeeManager implements EmployeeService {
 
-	private EmployeesDao employeesDao;
+	private EmployeeDao employeesDao;
 	
 	@Autowired
-	public EmployeesManager(EmployeesDao employeesDao) {
+	public EmployeeManager(EmployeeDao employeesDao) {
 		super();
 		this.employeesDao = employeesDao;
 	}
 
 	@Override
-	public DataResult<List<Employees>> getAll() {
-		return new SuccessDataResult<List<Employees>>
+	public DataResult<List<Employee>> getAll() {
+		return new SuccessDataResult<List<Employee>>
 		(this.employeesDao.findAll());
 	}
 
 	@Override
-	public Result add(Employees employees) {
+	public Result add(Employee employees) {
 		this.employeesDao.save(employees);
 		return new SuccessResult("Employee added.");
 	}

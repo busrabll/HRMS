@@ -13,26 +13,23 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="jobSeekers")
+@Table(name="employers")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobSeekers extends Users {
+public class Employer extends User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="first_name")
-	private String firstName;
+	@Column(name="company_name")
+	private String companyName;
 	
-	@Column(name="last_name")
-	private String lastName;
+	@Column(name="web_site")
+	private String webSite;
 	
-	@Column(name="birth_of_year")
-	private int birthOfYear;
-	
-	@Column(name="national_id")
-	private String nationalId;
+	@Column(name="phone_number")
+	private String phoneNumber;
 
 }

@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.JobSeekersService;
+import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.JobSeekersDao;
-import kodlamaio.hrms.entities.concretes.JobSeekers;
+import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
+import kodlamaio.hrms.entities.concretes.JobSeeker;
 
 @Service
-public class JobSeekersManager implements JobSeekersService {
+public class JobSeekerManager implements JobSeekerService {
 
-	private JobSeekersDao jobSeekersDao;
+	private JobSeekerDao jobSeekersDao;
 	
 	@Autowired
-	public JobSeekersManager(JobSeekersDao jobSeekersDao) {
+	public JobSeekerManager(JobSeekerDao jobSeekersDao) {
 		super();
 		this.jobSeekersDao = jobSeekersDao;
 	}
 
 	@Override
-	public DataResult<List<JobSeekers>> getAll() {
-		return new SuccessDataResult<List<JobSeekers>>
+	public DataResult<List<JobSeeker>> getAll() {
+		return new SuccessDataResult<List<JobSeeker>>
 		(this.jobSeekersDao.findAll());
 	}
 
 	@Override
-	public Result add(JobSeekers jobSeekers) {
+	public Result add(JobSeeker jobSeekers) {
 		this.jobSeekersDao.save(jobSeekers);
 		return new SuccessResult("Job seeker added.");
 	}

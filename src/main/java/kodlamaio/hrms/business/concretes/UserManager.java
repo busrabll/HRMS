@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.UsersService;
+import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.UsersDao;
-import kodlamaio.hrms.entities.concretes.Users;
+import kodlamaio.hrms.dataAccess.abstracts.UserDao;
+import kodlamaio.hrms.entities.concretes.User;
 
 @Service
-public class UsersManager implements UsersService {
+public class UserManager implements UserService {
 
-	private UsersDao usersDao;
+	private UserDao usersDao;
 	
 	@Autowired
-	public UsersManager(UsersDao usersDao) {
+	public UserManager(UserDao usersDao) {
 		super();
 		this.usersDao = usersDao;
 	}
 
 	@Override
-	public DataResult<List<Users>> getAll() {
-		return new SuccessDataResult<List<Users>>
+	public DataResult<List<User>> getAll() {
+		return new SuccessDataResult<List<User>>
 		(this.usersDao.findAll());			
 	}
 
 	@Override
-	public Result add(Users users) {
+	public Result add(User users) {
 		this.usersDao.save(users);
 		return new SuccessResult("User added.");
 	}

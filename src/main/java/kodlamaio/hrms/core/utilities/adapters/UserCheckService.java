@@ -2,10 +2,10 @@ package kodlamaio.hrms.core.utilities.adapters;
 
 import java.rmi.RemoteException;
 
-import kodlamaio.hrms.entities.concretes.JobSeekers;
+import kodlamaio.hrms.entities.concretes.JobSeeker;
 
 public interface UserCheckService {
 
-	boolean checkIfRealPerson(JobSeekers jobSeekers) throws NumberFormatException, RemoteException;
+	boolean checkIfRealPerson(JobSeeker jobSeekers) throws NumberFormatException, RemoteException;
 	
 }

@@ -5,34 +5,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.JobTitlesService;
+import kodlamaio.hrms.business.abstracts.JobTitleService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.JobTitlesDao;
-import kodlamaio.hrms.entities.concretes.JobTitles;
+import kodlamaio.hrms.dataAccess.abstracts.JobTitleDao;
+import kodlamaio.hrms.entities.concretes.JobTitle;
 
 @Service
-public class JobTitlesManager implements JobTitlesService  {
+public class JobTitleManager implements JobTitleService  {
 
 	@Autowired
-	private JobTitlesDao jobTitlesDao;
+	private JobTitleDao jobTitlesDao;
 	
-	public JobTitlesManager(JobTitlesDao jobTitlesDao) {
+	public JobTitleManager(JobTitleDao jobTitlesDao) {
 		super();
 		this.jobTitlesDao = jobTitlesDao;
 	}
 
 	@Override
-	public DataResult<List<JobTitles>> getAll() {
+	public DataResult<List<JobTitle>> getAll() {
 		
-		return new SuccessDataResult<List<JobTitles>>
+		return new SuccessDataResult<List<JobTitle>>
 		(this.jobTitlesDao.findAll());
 	}
 
 	@Override
-	public Result add(JobTitles jobTitles) {
+	public Result add(JobTitle jobTitles) {
 		this.jobTitlesDao.save(jobTitles);
 		return new SuccessResult("Job title added.");
 	}

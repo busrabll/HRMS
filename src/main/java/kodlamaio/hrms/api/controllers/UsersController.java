@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import kodlamaio.hrms.business.abstracts.UsersService;
+import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Users;
+import kodlamaio.hrms.entities.concretes.User;
 
 import java.util.List;
 
@@ -18,21 +18,21 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UsersController {
 
-	private UsersService usersService;
+	private UserService usersService;
 	
 	@Autowired
-	public UsersController(UsersService usersService) {
+	public UsersController(UserService usersService) {
 		super();
 		this.usersService = usersService;
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<Users>> getAll(){	
+	public DataResult<List<User>> getAll(){	
 		return this.usersService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Users users) {
+	public Result add(@RequestBody User users) {
 		return this.usersService.add(users);
 	}
 	
