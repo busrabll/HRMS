@@ -19,22 +19,22 @@ import kodlamaio.hrms.entities.concretes.Employer;
 @RequestMapping("/api/employers")
 public class EmployersController {
 	
-	private EmployerService employersService;
+	private EmployerService employerService;
 	
 	@Autowired
-	public EmployersController(EmployerService employersService) {
+	public EmployersController(EmployerService employerService) {
 		super();
-		this.employersService = employersService;
+		this.employerService = employerService;
 	}
 
 	@GetMapping("/getall")
 	public DataResult<List<Employer>> getAll(){
-		return this.employersService.getAll();	
+		return this.employerService.getAll();	
 	}
 	
 	@PostMapping("/add") 
-	public Result add(@RequestBody Employer employers) {
-		return this.employersService.add(employers);
+	public Result add(@RequestBody Employer employer) {
+		return this.employerService.add(employer);
 	}
 	
 }

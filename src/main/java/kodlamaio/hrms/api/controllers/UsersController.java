@@ -18,22 +18,22 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UsersController {
 
-	private UserService usersService;
+	private UserService userService;
 	
 	@Autowired
-	public UsersController(UserService usersService) {
+	public UsersController(UserService userService) {
 		super();
-		this.usersService = usersService;
+		this.userService = userService;
 	}
 
 	@GetMapping("/getall")
 	public DataResult<List<User>> getAll(){	
-		return this.usersService.getAll();
+		return this.userService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody User users) {
-		return this.usersService.add(users);
+	public Result add(@RequestBody User user) {
+		return this.userService.add(user);
 	}
 	
 }

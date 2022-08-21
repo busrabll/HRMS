@@ -18,22 +18,22 @@ import java.util.List;
 @RequestMapping("/api/jobSeekers")
 public class JobSeekersController {
 	
-	private JobSeekerService jobSeekersService;
+	private JobSeekerService jobSeekerService;
 	
 	@Autowired
-	public JobSeekersController(JobSeekerService jobSeekersService) {
+	public JobSeekersController(JobSeekerService jobSeekerService) {
 		super();
-		this.jobSeekersService = jobSeekersService;
+		this.jobSeekerService = jobSeekerService;
 	}
 
 	@GetMapping("/getall")
 	public DataResult<List<JobSeeker>> getAll(){
-		return this.jobSeekersService.getAll();	
+		return this.jobSeekerService.getAll();	
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobSeeker jobSeekers) {
-		return this.jobSeekersService.add(jobSeekers);
+	public Result add(@RequestBody JobSeeker jobSeeker) {
+		return this.jobSeekerService.add(jobSeeker);
 	}
 	
 }

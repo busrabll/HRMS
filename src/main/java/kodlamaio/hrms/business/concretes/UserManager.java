@@ -16,23 +16,23 @@ import kodlamaio.hrms.entities.concretes.User;
 @Service
 public class UserManager implements UserService {
 
-	private UserDao usersDao;
+	private UserDao userDao;
 	
 	@Autowired
-	public UserManager(UserDao usersDao) {
+	public UserManager(UserDao userDao) {
 		super();
-		this.usersDao = usersDao;
+		this.userDao = userDao;
 	}
 
 	@Override
 	public DataResult<List<User>> getAll() {
 		return new SuccessDataResult<List<User>>
-		(this.usersDao.findAll());			
+		(this.userDao.findAll());			
 	}
 
 	@Override
-	public Result add(User users) {
-		this.usersDao.save(users);
+	public Result add(User user) {
+		this.userDao.save(user);
 		return new SuccessResult("User added.");
 	}
 

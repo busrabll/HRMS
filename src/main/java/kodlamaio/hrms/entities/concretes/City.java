@@ -16,26 +16,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="employers")
+@Table(name="cities")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employer extends User {
+public class City {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="company_name")
-	private String companyName;
+	@Column(name="city_name")
+	private String cityName;
 	
-	@Column(name="web_site")
-	private String webSite;
-	
-	@Column(name="phone_number")
-	private String phoneNumber;
-	
-	@OneToMany(mappedBy = "employers")
+	@OneToMany(mappedBy = "cities")
 	private List<JobAdvertisement> jobAdvertisements;
-
 }
