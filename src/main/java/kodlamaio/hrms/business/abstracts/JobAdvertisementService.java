@@ -8,5 +8,17 @@ import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 
 public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getAll();
+	
+	DataResult<List<JobAdvertisement>> getAllSorted();
+	
 	Result add(JobAdvertisement jobAdvertisement);
+	
+	DataResult <JobAdvertisement> getById(int id);
+
+	DataResult <List<JobAdvertisement>> getByJobAdvertisement();
+
+	DataResult <List<JobAdvertisement>> getByJobAdvertisementAndCompanyName(String companyName);
+
+	DataResult <List<JobAdvertisement>> getByJobAdvertisementAndEmployer(int id);
+	
 }
