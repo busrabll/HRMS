@@ -63,5 +63,9 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>> getAllSorted(){
 		return this.jobAdvertisementService.getAllSorted();
 	}
-
+	
+	@PostMapping("/closeJobAdvert")
+	public Result closeJobAdvert(@RequestBody int id) {
+		return this.jobAdvertisementService.closeJobAdvert(id);	
+	}
 }

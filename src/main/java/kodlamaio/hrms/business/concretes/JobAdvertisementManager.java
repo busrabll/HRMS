@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
@@ -63,7 +64,18 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	public DataResult<List<JobAdvertisement>> getAllSorted() {
 		Sort sort = Sort.by(Sort.Direction.DESC, "releaseDate");
 		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.findAll(sort));
+		(this.jobAdvertisementDao.findAll(sort), "Successful");
 	}
 
+	@Override
+	public Result closeJobAdvert(int id) {
+		if(getById(id).getData().isActive() == false) {
+			return new ErrorResult("job advertisement is closed");	
+		}
+		
+		JobAdvertisement jobAdvertisement = getById(id).getData();
+		jobAdvertisement.setActive(false);
+		return new SuccessResult("job advertisement closed");
+	}
+	
 }

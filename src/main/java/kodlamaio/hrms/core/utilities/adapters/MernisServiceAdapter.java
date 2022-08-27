@@ -9,15 +9,15 @@ import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
 public class MernisServiceAdapter implements UserCheckService {
 
 	@Override
-	public boolean checkIfRealPerson(JobSeeker jobSeekers) throws NumberFormatException, RemoteException {
+	public boolean checkIfRealPerson(JobSeeker jobSeeker) throws NumberFormatException, RemoteException {
 
 		KPSPublicSoapProxy client = new KPSPublicSoapProxy();
 		
 		boolean result = client.TCKimlikNoDogrula(
-				Integer.valueOf(jobSeekers.getNationalId()),
-				jobSeekers.getFirstName(),
-				jobSeekers.getFirstName(),
-				jobSeekers.getBirthOfYear());
+				Integer.valueOf(jobSeeker.getNationalId()),
+				jobSeeker.getFirstName(),
+				jobSeeker.getLastName(),
+				jobSeeker.getBirthOfYear());
 		
 		return result;
 	}

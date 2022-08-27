@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +31,8 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
+	@NotBlank
+	@NotNull
 	@Column(name="job_description")
 	private String jobDescription;
 	
@@ -38,6 +42,8 @@ public class JobAdvertisement {
 	@Column(name="max_salary")
 	private int maxSalary;
 	
+	@NotBlank
+	@NotNull
 	@Column(name="open_position_count")
 	private int openPositionCount;
 	
@@ -50,10 +56,14 @@ public class JobAdvertisement {
 	@Column(name="is_active", columnDefinition = "boolean default true")
 	private boolean isActive;
 	
+	@NotBlank
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPosition;
 	
+	@NotBlank
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="city_id")
 	private City city;

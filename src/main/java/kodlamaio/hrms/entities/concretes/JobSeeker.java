@@ -1,10 +1,17 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -34,5 +41,27 @@ public class JobSeeker extends User {
 	
 	@Column(name="national_id")
 	private String nationalId;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<ForeignLanguage> foreignLanguages;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<JobExperience> jobExperiences;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<Link> links;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<School> schools;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<Skill> skills;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobSeeker")
+	private List<CoverLetter> coverLetters;
+	
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Image image;
 
 }

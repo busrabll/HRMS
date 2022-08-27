@@ -13,6 +13,8 @@ public interface JobAdvertisementService {
 	
 	Result add(JobAdvertisement jobAdvertisement);
 	
+	Result closeJobAdvert(int id);
+	
 	DataResult <JobAdvertisement> getById(int id);
 
 	DataResult <List<JobAdvertisement>> getByJobAdvertisement();
@@ -20,5 +22,5 @@ public interface JobAdvertisementService {
 	DataResult <List<JobAdvertisement>> getByJobAdvertisementAndCompanyName(String companyName);
 
 	DataResult <List<JobAdvertisement>> getByJobAdvertisementAndEmployer(int id);
-	
+		
 }
